@@ -37,7 +37,7 @@ public class MapLoader {
                             cell.setType(CellType.FLOOR);
                             break;
                         case 'd':
-                            cell.setType(CellType.FLOOR);
+                            cell.setType(CellType.MONSTER);
                             new Dementor(cell);
                             break;
                         case '@':
