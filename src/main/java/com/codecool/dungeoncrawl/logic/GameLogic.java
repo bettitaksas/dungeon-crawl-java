@@ -29,8 +29,10 @@ public class GameLogic {
         return Integer.toString(map.getPlayer().getHealth());
     }
 
+    public String getWandAmount() { return Integer.toString(map.getPlayer().getWand()); }
 
     public GameMap getMap() {
         return map;
     }
+
 }

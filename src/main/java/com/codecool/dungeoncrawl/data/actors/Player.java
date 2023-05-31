@@ -7,6 +7,8 @@ import com.codecool.dungeoncrawl.data.items.Key;
 import com.codecool.dungeoncrawl.data.items.Wand;
 
 import java.util.HashSet;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 public class Player extends Actor {
@@ -95,6 +97,23 @@ public class Player extends Actor {
             getCell().setType(CellType.FLOOR);
         }
 
+    }
+
+/*    public int getWand() {
+        return items.stream().filter(i -> Objects.equals(i.getTileName(), "wand")).findFirst().get().getAmount();
+    }*/
+
+    public int getWand() {
+        Optional<Item> wandItem = items.stream()
+                .filter(i -> Objects.equals(i.getTileName(), "wand"))
+                .findFirst();
+
+        if (wandItem.isPresent()) {
+            return wandItem.get().getAmount();
+        } else {
+            // handle the case when "wand" item is not found
+            return 0; // or any other appropriate value
+        }
     }
 
 }
