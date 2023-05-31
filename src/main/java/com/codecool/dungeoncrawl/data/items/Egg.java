@@ -5,6 +5,6 @@ public class Egg extends Item{
 
     @Override
     public String getTileName() {
-        return null;
+        return "egg";
     }
 }
