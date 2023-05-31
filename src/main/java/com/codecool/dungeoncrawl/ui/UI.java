@@ -62,5 +62,6 @@ public class UI {
         }
         mainStage.setHealthLabelText(logic.getPlayerHealth());
         mainStage.setWandLabelText(logic.getWandAmount());
+        mainStage.setKeyLabelText(logic.getKeyAmount());
     }
 }
