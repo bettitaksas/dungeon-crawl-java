@@ -37,6 +37,7 @@ public class Tiles {
         tileMap.put("wand", new Tile(0, 26));
         tileMap.put("octopus", new Tile(25,8));
         tileMap.put("basiliscus", new Tile(28,8));
+        tileMap.put("playerWithWand", new Tile(30, 3));
     }
 
     public static void drawTile(GraphicsContext context, Drawable d, int x, int y) {

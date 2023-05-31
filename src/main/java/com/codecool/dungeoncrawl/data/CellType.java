@@ -11,7 +11,8 @@ public enum CellType {
     WATER("water"),
     SCUBA("scuba"),
     EGG("egg"),
-    WAND("wand");
+    WAND("wand"),
+    PLAYERWITHWAND("playerWithWand");
 
     private final String tileName;
 
