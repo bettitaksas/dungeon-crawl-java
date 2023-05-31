@@ -5,6 +5,7 @@ public enum CellType {
     FLOOR("floor"),
     WALL("wall"),
     MONSTER("monster"),
+    DEADENEMY("deadEnemy"),
     CLOSEDDOOR("closedDoor"),
     OPENEDDOOR("openedDoor"),
     GOLDKEY("goldKey"),
