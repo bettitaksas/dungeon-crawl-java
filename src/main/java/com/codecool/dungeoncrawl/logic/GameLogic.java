@@ -37,6 +37,7 @@ public class GameLogic {
 
     public String getEggAmount() { return Integer.toString(map.getPlayer().getEgg()); }
 
+
     public GameMap getMap() {
         return map;
     }

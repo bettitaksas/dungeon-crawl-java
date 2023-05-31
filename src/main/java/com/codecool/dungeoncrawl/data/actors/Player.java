@@ -223,5 +223,4 @@ public class Player extends Actor {
             return 0;
         }
     }
-
 }
