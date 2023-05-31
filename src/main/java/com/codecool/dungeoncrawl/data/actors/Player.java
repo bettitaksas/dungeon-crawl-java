@@ -4,6 +4,7 @@ import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.items.*;
 
+
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Optional;
@@ -198,4 +199,28 @@ public class Player extends Actor {
         }
     }
 
+    public int getScuba() {
+        Optional<Item> scubaItem = items.stream()
+                .filter(i -> Objects.equals(i.getTileName(), "scuba"))
+                .findFirst();
+
+        if(scubaItem.isPresent()) {
+            return scubaItem.get().getAmount();
+        } else {
+            //handle the case when "scuba" item is not found
+            return 0; //or any other appropriate value
+        }
+    }
+
+    public int getEgg() {
+        Optional<Item> eggItem = items.stream()
+                .filter(i -> Objects.equals(i.getTileName(), "egg"))
+                .findFirst();
+
+        if(eggItem.isPresent()) {
+            return eggItem.get().getAmount();
+        } else {
+            return 0;
+        }
+    }
 }

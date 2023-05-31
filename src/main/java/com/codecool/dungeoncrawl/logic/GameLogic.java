@@ -33,6 +33,11 @@ public class GameLogic {
 
     public String getKeyAmount() { return Integer.toString(map.getPlayer().getKey()); }
 
+    public String getScubaAmount() { return Integer.toString(map.getPlayer().getScuba()); }
+
+    public String getEggAmount() { return Integer.toString(map.getPlayer().getEgg()); }
+
+
     public GameMap getMap() {
         return map;
     }

@@ -38,4 +38,11 @@ public class MainStage {
         this.statusPane.setKeyValue(text);
     }
 
+    public void setScubaLabelText(String text) { 
+        this.statusPane.setScubaValue(text);
+    }
+
+    public void setEggLabelText(String text) {
+        this.statusPane.setEggValue(text);
+    }
 }
