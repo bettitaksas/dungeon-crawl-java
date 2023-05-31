@@ -31,6 +31,8 @@ public class GameLogic {
 
     public String getWandAmount() { return Integer.toString(map.getPlayer().getWand()); }
 
+    public String getKeyAmount() { return Integer.toString(map.getPlayer().getKey()); }
+
     public GameMap getMap() {
         return map;
     }

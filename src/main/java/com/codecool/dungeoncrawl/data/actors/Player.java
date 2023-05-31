@@ -171,6 +171,7 @@ public class Player extends Actor {
         return items.stream().filter(i -> Objects.equals(i.getTileName(), "wand")).findFirst().get().getAmount();
     }*/
 
+    //KISZERVEZNI!!!
     public int getWand() {
         Optional<Item> wandItem = items.stream()
                 .filter(i -> Objects.equals(i.getTileName(), "wand"))
@@ -178,6 +179,19 @@ public class Player extends Actor {
 
         if (wandItem.isPresent()) {
             return wandItem.get().getAmount();
+        } else {
+            // handle the case when "wand" item is not found
+            return 0; // or any other appropriate value
+        }
+    }
+
+    public int getKey() {
+        Optional<Item> keyItem = items.stream()
+                .filter(i -> Objects.equals(i.getTileName(), "goldKey"))
+                .findFirst();
+
+        if (keyItem.isPresent()) {
+            return keyItem.get().getAmount();
         } else {
             // handle the case when "wand" item is not found
             return 0; // or any other appropriate value
