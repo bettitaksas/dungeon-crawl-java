@@ -5,7 +5,7 @@ import com.codecool.dungeoncrawl.data.Drawable;
 
 public abstract class Item implements Drawable {
 
-    public Cell getCell() {
+ /*   public Cell getCell() {
         return cell;
     }
 
@@ -15,7 +15,7 @@ public abstract class Item implements Drawable {
 
     public int getY() {
         return cell.getY();
-    }
+    }*/
 
     private int amount;
     //private Cell cell;
