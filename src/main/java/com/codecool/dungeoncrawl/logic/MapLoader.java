@@ -7,6 +7,7 @@ import com.codecool.dungeoncrawl.data.actors.Basiliscus;
 import com.codecool.dungeoncrawl.data.actors.Octopus;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.Dementor;
+import com.codecool.dungeoncrawl.data.items.Key;
 
 import java.io.InputStream;
 import java.util.Scanner;
@@ -52,6 +53,7 @@ public class MapLoader {
                             break;
                         case 'k':
                             cell.setType(CellType.GOLDKEY);
+                            new Key(cell);
                             break;
                         case 'w':
                             cell.setType(CellType.WATER);
@@ -66,7 +68,7 @@ public class MapLoader {
                             cell.setType(CellType.WAND);
                             break;
                         case 'o':
-                            cell.setType(CellType.FLOOR);
+                            cell.setType(CellType.WATER);
                             new Octopus(cell);
                             break;
                         case 'b':
