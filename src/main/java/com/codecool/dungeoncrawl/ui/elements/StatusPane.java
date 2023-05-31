@@ -20,6 +20,7 @@ public class StatusPane {
     private Label eggTextLabel;
     private Label eggValueLabel;
 
+
     public StatusPane() {
         ui = new GridPane();
         healthTextLabel = new Label("Health: ");
@@ -36,6 +37,7 @@ public class StatusPane {
 
         eggTextLabel = new Label("Egg: ");
         eggValueLabel = new Label();
+
     }
 
     public BorderPane build() {
@@ -54,6 +56,7 @@ public class StatusPane {
         ui.add(eggTextLabel, 0, 20);
         ui.add(eggValueLabel, 1, 20);
 
+
         BorderPane borderPane = new BorderPane();
         borderPane.setRight(ui);
         return borderPane;
@@ -68,6 +71,12 @@ public class StatusPane {
     public void setKeyValue(String text) {
         keyValueLabel.setText(text);
     }
-    public void setScubaValue(String text) { scubaValueLabel.setText(text);}
-    public void setEggValue(String text) { eggValueLabel.setText(text);}
+
+    public void setScubaValue(String text) { 
+        scubaValueLabel.setText(text);
+    }
+  
+    public void setEggValue(String text) { 
+        eggValueLabel.setText(text);
+    }
 }
