@@ -20,6 +20,19 @@ public class Player extends Actor {
         return "player";
     }
 
+    public void fight(int dx, int dy) {
+        Cell cell = this.getCell();
+        Cell nextCell = cell.getNeighbor(dx, dy);
+        if (nextCell.getType() == CellType.MONSTER) {
+            if (nextCell.getActor().getTileName() == "dementor" ||
+                    nextCell.getActor().getTileName() == "basiliscus" ||
+                    nextCell.getActor().getTileName() == "octopus"){
+                nextCell.getActor().setHealth(getHealth() - 5);
+                cell.getActor().setHealth(getHealth() - 2);
+            }
+        }
+    }
+
     //tárolhatóság
     public void pickItemUp() {
 
