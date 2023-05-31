@@ -15,8 +15,8 @@ public class StatusPane {
     private Label wandValueLabel;
     private Label keyTextLabel;
     private Label keyValueLabel;
-    private Label scubeTextLabel;
-    private Label scubeValueLabel;
+    private Label scubaTextLabel;
+    private Label scubaValueLabel;
     private Label eggTextLabel;
     private Label eggValueLabel;
 
@@ -31,8 +31,8 @@ public class StatusPane {
         keyTextLabel = new Label("Key: ");
         keyValueLabel = new Label();
 
-        scubeTextLabel = new Label("Scuba: ");
-        scubeValueLabel = new Label();
+        scubaTextLabel = new Label("Scuba: ");
+        scubaValueLabel = new Label();
 
         eggTextLabel = new Label("Egg: ");
         eggValueLabel = new Label();
@@ -49,8 +49,8 @@ public class StatusPane {
         ui.add(wandValueLabel, 1, 5);
         ui.add(keyTextLabel, 0, 10);
         ui.add(keyValueLabel, 1, 10);
-        ui.add(scubeTextLabel, 0, 15);
-        ui.add(scubeValueLabel, 1, 15);
+        ui.add(scubaTextLabel, 0, 15);
+        ui.add(scubaValueLabel, 1, 15);
         ui.add(eggTextLabel, 0, 20);
         ui.add(eggValueLabel, 1, 20);
 
@@ -68,6 +68,6 @@ public class StatusPane {
     public void setKeyValue(String text) {
         keyValueLabel.setText(text);
     }
-    public void setScubaValue(String text) { scubeValueLabel.setText(text);}
+    public void setScubaValue(String text) { scubaValueLabel.setText(text);}
     public void setEggValue(String text) { eggValueLabel.setText(text);}
 }
