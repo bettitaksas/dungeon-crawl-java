@@ -31,7 +31,7 @@ public class StatusPane {
         keyTextLabel = new Label("Key: ");
         keyValueLabel = new Label();
 
-        scubeTextLabel = new Label("Scube: ");
+        scubeTextLabel = new Label("Scuba: ");
         scubeValueLabel = new Label();
 
         eggTextLabel = new Label("Egg: ");
@@ -68,6 +68,6 @@ public class StatusPane {
     public void setKeyValue(String text) {
         keyValueLabel.setText(text);
     }
-    public void setScubeValue(String text) { scubeValueLabel.setText(text);}
+    public void setScubaValue(String text) { scubeValueLabel.setText(text);}
     public void setEggValue(String text) { eggValueLabel.setText(text);}
 }

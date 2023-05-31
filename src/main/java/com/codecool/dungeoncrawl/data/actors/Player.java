@@ -199,15 +199,15 @@ public class Player extends Actor {
         }
     }
 
-    public int getScube() {
-        Optional<Item> scubeItem = items.stream()
-                .filter(i -> Objects.equals(i.getTileName(), "scube"))
+    public int getScuba() {
+        Optional<Item> scubaItem = items.stream()
+                .filter(i -> Objects.equals(i.getTileName(), "scuba"))
                 .findFirst();
 
-        if(scubeItem.isPresent()) {
-            return scubeItem.get().getAmount();
+        if(scubaItem.isPresent()) {
+            return scubaItem.get().getAmount();
         } else {
-            //handle the case when "scube" item is not found
+            //handle the case when "scuba" item is not found
             return 0; //or any other appropriate value
         }
     }
