@@ -15,6 +15,10 @@ public class StatusPane {
     private Label wandValueLabel;
     private Label keyTextLabel;
     private Label keyValueLabel;
+    private Label scubeTextLabel;
+    private Label scubeValueLabel;
+    private Label eggTextLabel;
+    private Label eggValueLabel;
 
     public StatusPane() {
         ui = new GridPane();
@@ -26,6 +30,12 @@ public class StatusPane {
 
         keyTextLabel = new Label("Key: ");
         keyValueLabel = new Label();
+
+        scubeTextLabel = new Label("Scube: ");
+        scubeValueLabel = new Label();
+
+        eggTextLabel = new Label("Egg: ");
+        eggValueLabel = new Label();
     }
 
     public BorderPane build() {
@@ -39,6 +49,10 @@ public class StatusPane {
         ui.add(wandValueLabel, 1, 5);
         ui.add(keyTextLabel, 0, 10);
         ui.add(keyValueLabel, 1, 10);
+        ui.add(scubeTextLabel, 0, 15);
+        ui.add(scubeValueLabel, 1, 15);
+        ui.add(eggTextLabel, 0, 20);
+        ui.add(eggValueLabel, 1, 20);
 
         BorderPane borderPane = new BorderPane();
         borderPane.setRight(ui);
@@ -54,4 +68,6 @@ public class StatusPane {
     public void setKeyValue(String text) {
         keyValueLabel.setText(text);
     }
+    public void setScubeValue(String text) { scubeValueLabel.setText(text);}
+    public void setEggValue(String text) { eggValueLabel.setText(text);}
 }

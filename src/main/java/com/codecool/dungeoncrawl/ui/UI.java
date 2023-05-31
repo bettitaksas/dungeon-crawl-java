@@ -63,5 +63,7 @@ public class UI {
         mainStage.setHealthLabelText(logic.getPlayerHealth());
         mainStage.setWandLabelText(logic.getWandAmount());
         mainStage.setKeyLabelText(logic.getKeyAmount());
+        mainStage.setScubeLabelText(logic.getScubeAmount());
+        mainStage.setEggLabelText(logic.getEggAmount());
     }
 }

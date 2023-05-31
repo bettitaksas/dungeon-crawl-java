@@ -38,4 +38,8 @@ public class MainStage {
         this.statusPane.setKeyValue(text);
     }
 
+    public void setScubeLabelText(String text) { this.statusPane.setScubeValue(text); }
+
+    public void setEggLabelText(String text) { this.statusPane.setEggValue(text); }
+
 }

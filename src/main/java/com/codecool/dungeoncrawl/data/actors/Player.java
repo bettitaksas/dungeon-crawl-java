@@ -6,6 +6,7 @@ import com.codecool.dungeoncrawl.data.items.Item;
 import com.codecool.dungeoncrawl.data.items.Key;
 import com.codecool.dungeoncrawl.data.items.Wand;
 
+
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Optional;
@@ -127,6 +128,31 @@ public class Player extends Actor {
         } else {
             // handle the case when "wand" item is not found
             return 0; // or any other appropriate value
+        }
+    }
+
+    public int getScube() {
+        Optional<Item> scubeItem = items.stream()
+                .filter(i -> Objects.equals(i.getTileName(), "scube"))
+                .findFirst();
+
+        if(scubeItem.isPresent()) {
+            return scubeItem.get().getAmount();
+        } else {
+            //handle the case when "scube" item is not found
+            return 0; //or any other appropriate value
+        }
+    }
+
+    public int getEgg() {
+        Optional<Item> eggItem = items.stream()
+                .filter(i -> Objects.equals(i.getTileName(), "egg"))
+                .findFirst();
+
+        if(eggItem.isPresent()) {
+            return eggItem.get().getAmount();
+        } else {
+            return 0;
         }
     }
 
