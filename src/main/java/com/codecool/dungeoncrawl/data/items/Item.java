@@ -4,12 +4,6 @@ import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.Drawable;
 
 public abstract class Item implements Drawable {
-    private Cell cell;
-
-    public Item(Cell cell) {
-        this.cell = cell;
-        this.cell.setItem(this);
-    }
 
     public Cell getCell() {
         return cell;
@@ -22,4 +16,22 @@ public abstract class Item implements Drawable {
     public int getY() {
         return cell.getY();
     }
+
+    private int amount;
+    //private Cell cell;
+
+    public Item(int amount /*Cell cell*/) {
+        this.amount = amount;
+        //this.cell = cell;
+        //this.cell.setItem(this);
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
 }

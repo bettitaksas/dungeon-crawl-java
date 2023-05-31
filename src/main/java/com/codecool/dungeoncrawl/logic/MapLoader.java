@@ -38,7 +38,7 @@ public class MapLoader {
                             cell.setType(CellType.FLOOR);
                             break;
                         case 'd':
-                            cell.setType(CellType.FLOOR);
+                            cell.setType(CellType.MONSTER);
                             new Dementor(cell);
                             break;
                         case '@':
@@ -68,11 +68,11 @@ public class MapLoader {
                             cell.setType(CellType.WAND);
                             break;
                         case 'o':
-                            cell.setType(CellType.WATER);
+                            cell.setType(CellType.MONSTER);
                             new Octopus(cell);
                             break;
                         case 'b':
-                            cell.setType(CellType.FLOOR);
+                            cell.setType(CellType.MONSTER);
                             new Basiliscus(cell);
                             break;
                         default:
