@@ -2,9 +2,9 @@ package com.codecool.dungeoncrawl.data.deads;
 
 import com.codecool.dungeoncrawl.data.Cell;
 
-public class deadEnemy extends Dead {
+public class DeadEnemy extends Dead {
 
-    public deadEnemy(Cell cell) {
+    public DeadEnemy(Cell cell) {
         super(cell);
     }
 
