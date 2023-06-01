@@ -42,7 +42,7 @@ public class MainStage {
         this.statusPane.setScubaValue(text);
     }
 
-    public void setEggLabelText(String text) {
-        this.statusPane.setEggValue(text);
+    public void setSocksLabelText(String text) {
+        this.statusPane.setSocksValue(text);
     }
 }

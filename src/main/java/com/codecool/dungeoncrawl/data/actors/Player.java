@@ -46,25 +46,24 @@ public class Player extends Actor {
     }
 
     public void fight(int dx, int dy) {
-        Cell cell = this.getCell();
+        int damagePlayer = 5;
+        int damageEnemy = 2;
+        int gratisHealth = 10;
+        Actor player = cell.getActor();
         Cell nextCell = cell.getNeighbor(dx, dy);
+        Actor enemy = nextCell.getActor();
+
         if (nextCell.getType() == CellType.FLOOR && nextCell.getActor() != null) {
-            if (nextCell.getActor().getTileName() == "dementor" ||
-                    nextCell.getActor().getTileName() == "basiliscus" ||
-                    nextCell.getActor().getTileName() == "octopus"){
+            enemy.setHealth(enemy.getHealth() - damagePlayer);
+            player.setHealth(player.getHealth() - damageEnemy);
 
-                nextCell.getActor().setHealth(nextCell.getActor().getHealth() - 5);
-                cell.getActor().setHealth(cell.getActor().getHealth() - 2);
-
-                if(nextCell.getActor().getHealth() <= 0){
-                    nextCell.setActor(null);
-                    nextCell.setType(CellType.DEADENEMY);
-                    cell.getActor().setHealth(cell.getActor().getHealth() + 10);
-                }
-                if(cell.getActor().getHealth() <= 0){
-                    cell.getActor().die();
-
-                }
+            if(enemy.getHealth() <= 0){
+                nextCell.setActor(null);
+                nextCell.setType(CellType.DEADENEMY);
+                player.setHealth(player.getHealth() + gratisHealth);
+            }
+            if(player.getHealth() <= 0){
+                player.die();
             }
         }
     }
