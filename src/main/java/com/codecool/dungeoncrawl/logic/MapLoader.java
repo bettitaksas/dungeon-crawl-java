@@ -73,6 +73,9 @@ public class MapLoader {
                             cell.setType(CellType.MONSTER);
                             new Basiliscus(cell);
                             break;
+                        case 'y':
+                            cell.setType(CellType.DEADENEMY);
+                            break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
                     }

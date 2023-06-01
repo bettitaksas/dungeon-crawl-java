@@ -12,5 +12,6 @@ public class Up implements KeyHandler {
         if(code.equals(event.getCode()))
             map.getPlayer().move(0, -1);
             map.getPlayer().pickItemUp();
+            map.getPlayer().fight(0, -1);
     }
 }

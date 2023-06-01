@@ -38,7 +38,7 @@ public class MainStage {
         this.statusPane.setKeyValue(text);
     }
 
-    public void setScubaLabelText(String text) { 
+    public void setScubaLabelText(String text) {
         this.statusPane.setScubaValue(text);
     }
 
