@@ -25,11 +25,9 @@ public class Player extends Actor {
         Cell cell = this.getCell();
         Cell nextCell = cell.getNeighbor(dx, dy);
         boolean keyExists = false;
-        int keyAmount;
         for (Item item : items) {
             if (item instanceof Key) {
                 keyExists = true;
-                keyAmount = item.getAmount();
                 break;
             }
         }
