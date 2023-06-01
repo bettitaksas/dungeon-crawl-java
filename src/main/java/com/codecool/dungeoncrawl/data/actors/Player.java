@@ -188,22 +188,22 @@ public class Player extends Actor {
 
 
             // check if wand item already exists in the list
-            boolean sockExists = false;
+            boolean socksExists = false;
             for (Item item : items) {
                 if (item instanceof Socks) {
-                    sockExists = true;
+                    socksExists = true;
                     break;
                 }
             }
 
-            if (!sockExists) {
+            if (!socksExists) {
                 Item socks = new Socks(1);
                 // If wand item doesn't exist, add it to the list
                 items.add(socks);
                 items.forEach(i -> System.out.println(i.getAmount()));
                 System.out.println("Length of the set: " + items.size());
                 System.out.println("First " + socks.getTileName() + " picked up");
-            } else if (sockExists) {
+            } else {
                 // if wand item exists, increment its amount
                 for (Item item : items) {
                     if (item instanceof Socks) {
@@ -271,6 +271,18 @@ public class Player extends Actor {
 
         if(eggItem.isPresent()) {
             return eggItem.get().getAmount();
+        } else {
+            return 0;
+        }
+    }
+
+    public int getSocks() {
+        Optional<Item> socksItem = items.stream()
+                .filter(i -> Objects.equals(i.getTileName(), "socks"))
+                .findFirst();
+
+        if(socksItem.isPresent()) {
+            return socksItem.get().getAmount();
         } else {
             return 0;
         }

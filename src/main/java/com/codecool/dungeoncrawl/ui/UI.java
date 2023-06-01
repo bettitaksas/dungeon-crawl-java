@@ -68,6 +68,6 @@ public class UI {
         mainStage.setWandLabelText(logic.getWandAmount());
         mainStage.setKeyLabelText(logic.getKeyAmount());
         mainStage.setScubaLabelText(logic.getScubaAmount());
-        mainStage.setSocksLabelText(logic.getEggAmount());
+        mainStage.setSocksLabelText(logic.getSocksAmount());
     }
 }
