@@ -72,11 +72,11 @@ public class StatusPane {
         keyValueLabel.setText(text);
     }
 
-    public void setScubaValue(String text) { 
+    public void setScubaValue(String text) {
         scubaValueLabel.setText(text);
     }
-  
-    public void setEggValue(String text) { 
+
+    public void setEggValue(String text) {
         eggValueLabel.setText(text);
     }
 }
