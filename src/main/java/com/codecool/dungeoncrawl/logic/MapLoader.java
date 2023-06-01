@@ -60,7 +60,7 @@ public class MapLoader {
                             cell.setType(CellType.SCUBA);
                             break;
                         case 'e':
-                            cell.setType(CellType.EGG);
+                            cell.setType(CellType.SOCKS);
                             break;
                         case 'm':
                             cell.setType(CellType.WAND);

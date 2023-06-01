@@ -183,38 +183,31 @@ public class Player extends Actor {
         }
 
 
-        if (getCell().getType() == CellType.EGG) {
-            System.out.println("EGG!!!");
+        if (getCell().getType() == CellType.SOCKS) {
+            System.out.println("SOCKS!!!");
+            System.out.println("Doby is a free elf!!!!!!!");
+
 
             // check if wand item already exists in the list
-            boolean wandExists = false;
+            boolean sockExists = false;
             for (Item item : items) {
-                if (item instanceof Wand) {
-                    wandExists = true;
+                if (item instanceof Socks) {
+                    sockExists = true;
                     break;
                 }
             }
 
-            // check if wand item already exists in the list
-            boolean eggExists = false;
-            for (Item item : items) {
-                if (item instanceof Egg) {
-                    eggExists = true;
-                    break;
-                }
-            }
-
-            if (!eggExists) {
-                Item egg = new Egg(1);
+            if (!sockExists) {
+                Item socks = new Socks(1);
                 // If wand item doesn't exist, add it to the list
-                items.add(egg);
+                items.add(socks);
                 items.forEach(i -> System.out.println(i.getAmount()));
                 System.out.println("Length of the set: " + items.size());
-                System.out.println("First " + egg.getTileName() + " picked up");
-            } else if (wandExists) {
+                System.out.println("First " + socks.getTileName() + " picked up");
+            } else if (sockExists) {
                 // if wand item exists, increment its amount
                 for (Item item : items) {
-                    if (item instanceof Egg) {
+                    if (item instanceof Socks) {
                         item.setAmount(item.getAmount() + 1);
                         break;
                     }

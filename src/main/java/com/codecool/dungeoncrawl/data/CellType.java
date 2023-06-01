@@ -11,7 +11,7 @@ public enum CellType {
     GOLDKEY("goldKey"),
     WATER("water"),
     SCUBA("scuba"),
-    EGG("egg"),
+    SOCKS("socks"),
     WAND("wand");
 
     private final String tileName;

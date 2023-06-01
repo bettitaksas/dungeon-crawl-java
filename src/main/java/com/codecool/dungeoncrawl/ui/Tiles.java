@@ -33,7 +33,7 @@ public class Tiles {
         tileMap.put("goldKey", new Tile(16, 23));
         tileMap.put("water", new Tile(8,5));
         tileMap.put("scuba", new Tile(28, 9));
-        tileMap.put("egg", new Tile(18, 29));
+        tileMap.put("socks", new Tile(8, 23));
         tileMap.put("wand", new Tile(0, 26));
         tileMap.put("octopus", new Tile(25,8));
         tileMap.put("basiliscus", new Tile(28,8));
