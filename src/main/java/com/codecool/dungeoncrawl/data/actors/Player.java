@@ -25,9 +25,11 @@ public class Player extends Actor {
         Cell cell = this.getCell();
         Cell nextCell = cell.getNeighbor(dx, dy);
         boolean keyExists = false;
+        int keyAmount;
         for (Item item : items) {
             if (item instanceof Key) {
                 keyExists = true;
+                keyAmount = item.getAmount();
                 break;
             }
         }
@@ -46,20 +48,22 @@ public class Player extends Actor {
     public void fight(int dx, int dy) {
         Cell cell = this.getCell();
         Cell nextCell = cell.getNeighbor(dx, dy);
-        if (nextCell.getType() == CellType.MONSTER) {
+        if (nextCell.getType() == CellType.FLOOR && nextCell.getActor() != null) {
             if (nextCell.getActor().getTileName() == "dementor" ||
                     nextCell.getActor().getTileName() == "basiliscus" ||
                     nextCell.getActor().getTileName() == "octopus"){
 
-                nextCell.getActor().setHealth(getHealth() - 5);
-                cell.getActor().setHealth(getHealth() - 2);
+                nextCell.getActor().setHealth(nextCell.getActor().getHealth() - 5);
+                cell.getActor().setHealth(cell.getActor().getHealth() - 2);
 
                 if(nextCell.getActor().getHealth() <= 0){
-                    nextCell.getActor().die();
+                    nextCell.setActor(null);
+                    nextCell.setType(CellType.DEADENEMY);
                     cell.getActor().setHealth(cell.getActor().getHealth() + 10);
                 }
                 if(cell.getActor().getHealth() <= 0){
                     cell.getActor().die();
+
                 }
             }
         }

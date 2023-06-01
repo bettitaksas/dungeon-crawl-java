@@ -53,8 +53,12 @@ public class UI {
         for (int x = 0; x < logic.getMapWidth(); x++) {
             for (int y = 0; y < logic.getMapHeight(); y++) {
                 Cell cell = logic.getCell(x, y);
+
                 if (cell.getActor() != null) {
                     Tiles.drawTile(context, cell.getActor(), x, y);
+                    //       if (cell.getActor().getTileName() == "dementor" ) {
+                    //           cell.getActor().randomMove();
+                    //       }
                 } else {
                     Tiles.drawTile(context, cell, x, y);
                 }

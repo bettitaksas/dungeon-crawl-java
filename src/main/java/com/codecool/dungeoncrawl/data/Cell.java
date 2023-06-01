@@ -49,6 +49,14 @@ public class Cell implements Drawable {
         return gameMap.getCell(x + dx, y + dy);
     }
 
+
+//teleport?
+  /*  public Cell getRandomOtherCell() {
+        int randomX = (int) Math.random()*24 + 1;
+        int randomY = (int) Math.random()*19 +1;
+        return gameMap.getCell((int) randomX, (int) randomY);
+    }*/
+
     @Override
     public String getTileName() {
         return type.getTileName();

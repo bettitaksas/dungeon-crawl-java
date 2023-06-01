@@ -17,11 +17,30 @@ public abstract class Actor implements Drawable {
 
     public void move(int dx, int dy) {
         Cell nextCell = cell.getNeighbor(dx, dy);
-        if (nextCell.getType() != CellType.WALL && nextCell.getType() != CellType.MONSTER  && nextCell.getType() != CellType.DEADENEMY && nextCell.getType() !=CellType.CLOSEDDOOR) {
+        if (nextCell.getType() != CellType.WALL && nextCell.getType() != CellType.MONSTER  &&
+                nextCell.getType() != CellType.DEADENEMY && nextCell.getType() !=CellType.CLOSEDDOOR &&
+                (nextCell.getActor() == null)) {
             cell.setActor(null);
             nextCell.setActor(this);
             cell = nextCell;
         }
+    }
+    public void randomMove() {
+        int randomDx = (int) (Math.random() * 3) - 1;
+        int randomDy = (int) (Math.random() * 3) - 1;
+        Cell nextCell = cell.getNeighbor(randomDx, randomDy);
+        if (nextCell.getActor() == null) {
+            move(randomDx, randomDy);
+        }
+
+
+
+      /*  Cell randomCell = cell.getRandomOtherCell();
+        if(randomCell.getType() == CellType.FLOOR && randomCell.getActor() == null) {
+            cell.setActor(null);
+            randomCell.setActor(this);
+            cell = randomCell;
+        }*/
     }
 
     public void die(){
