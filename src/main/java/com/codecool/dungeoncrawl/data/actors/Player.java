@@ -5,14 +5,11 @@ import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.items.*;
 
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 public class Player extends Actor {
 
-    private Set<Item> items = new HashSet<>();
+    private List<Item> items = new ArrayList<>();
     public Player(Cell cell) {
         super(cell);
     }
@@ -21,27 +18,21 @@ public class Player extends Actor {
         return "player";
     }
 
-    public void openDoor(int dx, int dy) {
-        Cell cell = this.getCell();
-        Cell nextCell = cell.getNeighbor(dx, dy);
-        boolean keyExists = false;
-        int keyAmount;
+    private boolean checkIfItemExists(String itemTileName) {
         for (Item item : items) {
-            if (item instanceof Key) {
-                keyExists = true;
-                keyAmount = item.getAmount();
-                break;
+            if (item.getTileName().equals(itemTileName)) {
+                return true;
             }
         }
-        if (nextCell.getType() == CellType.CLOSEDDOOR && keyExists == true /*&& keyAmount > 0*/) {
-            nextCell.setType(CellType.OPENEDDOOR);
-            for (Item item : items) {
-                if (item instanceof Key) {
-                    items.remove(item);
-                    break;
-                }
-            }
+        return false;
+    }
 
+    public void openDoor(int dx, int dy) {
+        Cell nextCell = cell.getNeighbor(dx, dy);
+        boolean keyExists = checkIfItemExists("goldKey");
+        if (nextCell.getType() == CellType.CLOSEDDOOR && keyExists) {
+            nextCell.setType(CellType.OPENEDDOOR);
+            removeKeyItem();
         }
     }
 
@@ -58,8 +49,7 @@ public class Player extends Actor {
             player.setHealth(player.getHealth() - damageEnemy);
 
             if(enemy.getHealth() <= 0){
-                nextCell.setActor(null);
-                nextCell.setType(CellType.DEADENEMY);
+                enemy.die();
                 player.setHealth(player.getHealth() + gratisHealth);
             }
             if(player.getHealth() <= 0){
@@ -68,212 +58,57 @@ public class Player extends Actor {
         }
     }
 
-    //tárolhatóság
-    public void pickItemUp() {
+    public void pickItemUp(CellType cellType, String itemTileName, Item itemToPickUp) {
 
-        ////KISZERVEZNI!!
-        if (getCell().getType() == CellType.WAND) {
-            System.out.println("WAND!!!");
+        if (getCell().getType() == cellType) {
 
-            Cell cell = this.getCell();
-            cell.getActor().setHealth(cell.getActor().getHealth() + 100);
-
-            // check if wand item already exists in the list
-            boolean wandExists = false;
-            for (Item item : items) {
-                if (item instanceof Wand) {
-                    wandExists = true;
-                    break;
-                }
+            if (cellType == CellType.WAND){
+                cell.getActor().setHealth(cell.getActor().getHealth() + 100);
             }
 
-            if (!wandExists) {
-                Item wand = new Wand(1);
-                // If wand item doesn't exist, add it to the list
-                items.add(wand);
-                items.forEach(i -> System.out.println(i.getAmount()));
-                System.out.println("Length of the set: " + items.size());
-                System.out.println("First one picked up");
+            boolean itemExists = checkIfItemExists(itemTileName);
+
+            if (!itemExists) {
+                items.add(itemToPickUp);
             } else {
-                // if wand item exists, increment its amount
-                for (Item item : items) {
-                    if (item instanceof Wand) {
-                        item.setAmount(item.getAmount() + 1);
-                        break;
-                    }
-                }
-                System.out.println("Another one picked up");
-                System.out.println("Length of the set: " + items.size());
-            }
 
-            // change the field to floor
-            getCell().setType(CellType.FLOOR);
+                increaseItemAmount(itemTileName);
+            }
+            setCellTypeBasedOnCellType(cellType);
         }
+    }
 
-
-        if (getCell().getType() == CellType.GOLDKEY) {
-            System.out.println("GOLDKEY!!!");
-
-            // check if wand item already exists in the list
-            boolean goldKeyExists = false;
-            for (Item item : items) {
-                if (item instanceof Key) {
-                    goldKeyExists = true;
-                    break;
-                }
+    private void removeKeyItem() {
+        for (Item item : items) {
+            if (item instanceof Key) {
+                items.remove(item);
+                break;
             }
-
-            if (!goldKeyExists) {
-                Item key = new Key(1);
-                // If wand item doesn't exist, add it to the list
-                items.add(key);
-                items.forEach(i -> System.out.println(i.getAmount()));
-                System.out.println("Length of the set: " + items.size());
-                System.out.println("First one picked up");
-            } else {
-                // if wand item exists, increment its amount
-                for (Item item : items) {
-                    if (item instanceof Key) {
-                        item.setAmount(item.getAmount() + 1);
-                        break;
-                    }
-                }
-                System.out.println("Another one picked up");
-                System.out.println("Length of the set: " + items.size());
-            }
-
-            // change the field to floor
-            getCell().setType(CellType.FLOOR);
         }
+    }
 
-        if (getCell().getType() == CellType.SCUBA) {
-            System.out.println("SCUBA!!!");
-
-            // check if wand item already exists in the list
-            boolean scubaExists = false;
-            for (Item item : items) {
-                if (item instanceof Scuba) {
-                    scubaExists = true;
-                    break;
-                }
-            }
-
-            if (!scubaExists) {
-                Item scuba = new Scuba(1);
-                // If wand item doesn't exist, add it to the list
-                items.add(scuba);
-                items.forEach(i -> System.out.println(i.getAmount()));
-                System.out.println("Length of the set: " + items.size());
-                System.out.println("First one picked up");
-            } else {
-                // if wand item exists, increment its amount
-                for (Item item : items) {
-                    if (item instanceof Scuba) {
-                        item.setAmount(item.getAmount() + 1);
-                        break;
-                    }
-                }
-                System.out.println("Another one picked up");
-                System.out.println("Length of the set: " + items.size());
-            }
-
-            // change the field to floor
-            getCell().setType(CellType.FLOOR);
-        }
-
-
-        if (getCell().getType() == CellType.SOCKS) {
-            System.out.println("SOCKS!!!");
-            System.out.println("Doby is a free elf!!!!!!!");
-
-
-            // check if wand item already exists in the list
-            boolean socksExists = false;
-            for (Item item : items) {
-                if (item instanceof Socks) {
-                    socksExists = true;
-                    break;
-                }
-            }
-
-            if (!socksExists) {
-                Item socks = new Socks(1);
-                // If wand item doesn't exist, add it to the list
-                items.add(socks);
-                items.forEach(i -> System.out.println(i.getAmount()));
-                System.out.println("Length of the set: " + items.size());
-                System.out.println("First " + socks.getTileName() + " picked up");
-            } else {
-                // if wand item exists, increment its amount
-                for (Item item : items) {
-                    if (item instanceof Socks) {
-                        item.setAmount(item.getAmount() + 1);
-                        break;
-                    }
-                }
-                System.out.println("Another one picked up");
-                System.out.println("Length of the set: " + items.size());
-            }
-
-            // change the field to floor
+    private void setCellTypeBasedOnCellType(CellType cellType) {
+        if (cellType == CellType.SOCKS) {
             getCell().setType(CellType.WATER);
+        } else {
+            getCell().setType(CellType.FLOOR);
         }
     }
 
-/*    public int getWand() {
-        return items.stream().filter(i -> Objects.equals(i.getTileName(), "wand")).findFirst().get().getAmount();
-    }*/
-
-    //KISZERVEZNI!!!
-    public int getWand() {
-        Optional<Item> wandItem = items.stream()
-                .filter(i -> Objects.equals(i.getTileName(), "wand"))
-                .findFirst();
-
-        if (wandItem.isPresent()) {
-            return wandItem.get().getAmount();
-        } else {
-            // handle the case when "wand" item is not found
-            return 0; // or any other appropriate value
+    private void increaseItemAmount(String itemTileName) {
+        for (Item item : items) {
+            if (item.getTileName().equals(itemTileName)) {
+                item.setAmount(item.getAmount() + 1);
+                break;
+            }
         }
     }
 
-    public int getKey() {
-        Optional<Item> keyItem = items.stream()
-                .filter(i -> Objects.equals(i.getTileName(), "goldKey"))
+    public int getItem(String itemTileName) {
+        Optional<Item> item = items.stream()
+                .filter(i -> Objects.equals(i.getTileName(), itemTileName))
                 .findFirst();
-
-        if (keyItem.isPresent()) {
-            return keyItem.get().getAmount();
-        } else {
-            // handle the case when "wand" item is not found
-            return 0; // or any other appropriate value
-        }
-    }
-
-    public int getScuba() {
-        Optional<Item> scubaItem = items.stream()
-                .filter(i -> Objects.equals(i.getTileName(), "scuba"))
-                .findFirst();
-
-        if(scubaItem.isPresent()) {
-            return scubaItem.get().getAmount();
-        } else {
-            //handle the case when "scuba" item is not found
-            return 0; //or any other appropriate value
-        }
-    }
-
-    public int getEgg() {
-        Optional<Item> eggItem = items.stream()
-                .filter(i -> Objects.equals(i.getTileName(), "egg"))
-                .findFirst();
-
-        if(eggItem.isPresent()) {
-            return eggItem.get().getAmount();
-        } else {
-            return 0;
-        }
+        return item.map(Item::getAmount).orElse(0);
     }
 
     public int getSocks() {

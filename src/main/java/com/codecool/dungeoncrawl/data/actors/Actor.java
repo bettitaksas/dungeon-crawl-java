@@ -3,8 +3,6 @@ package com.codecool.dungeoncrawl.data.actors;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.Drawable;
-import com.codecool.dungeoncrawl.data.deads.Dead;
-import com.codecool.dungeoncrawl.data.deads.deadEnemy;
 
 public abstract class Actor implements Drawable {
     protected Cell cell;
@@ -32,15 +30,6 @@ public abstract class Actor implements Drawable {
         if (nextCell.getActor() == null) {
             move(randomDx, randomDy);
         }
-
-
-
-      /*  Cell randomCell = cell.getRandomOtherCell();
-        if(randomCell.getType() == CellType.FLOOR && randomCell.getActor() == null) {
-            cell.setActor(null);
-            randomCell.setActor(this);
-            cell = randomCell;
-        }*/
     }
 
     public void die(){
