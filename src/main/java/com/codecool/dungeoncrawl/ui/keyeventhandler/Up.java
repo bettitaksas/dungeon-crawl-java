@@ -13,5 +13,6 @@ public class Up implements KeyHandler {
             map.getPlayer().move(0, -1);
             map.getPlayer().pickItemUp();
             map.getPlayer().fight(0, -1);
+            map.getPlayer().openDoor(0, -1);
     }
 }

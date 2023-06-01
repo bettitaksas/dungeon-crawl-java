@@ -13,5 +13,6 @@ public class Right implements KeyHandler {
         map.getPlayer().move(1, 0);
         map.getPlayer().pickItemUp();
         map.getPlayer().fight(1, 0);
+        map.getPlayer().openDoor(1, 0);
     }
 }
