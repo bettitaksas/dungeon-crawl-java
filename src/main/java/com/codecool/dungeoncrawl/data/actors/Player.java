@@ -18,16 +18,19 @@ public class Player extends Actor {
         return "player";
     }
 
+    private boolean checkIfItemExists(String itemTileName) {
+        for (Item item : items) {
+            if (item.getTileName().equals(itemTileName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void openDoor(int dx, int dy) {
         Cell cell = this.getCell();
         Cell nextCell = cell.getNeighbor(dx, dy);
-        boolean keyExists = false;
-        for (Item item : items) {
-            if (item instanceof Key) {
-                keyExists = true;
-                break;
-            }
-        }
+        boolean keyExists = checkIfItemExists("goldKey");
         if (nextCell.getType() == CellType.CLOSEDDOOR && keyExists) {
             nextCell.setType(CellType.OPENEDDOOR);
             for (Item item : items) {
@@ -70,13 +73,7 @@ public class Player extends Actor {
                 cell.getActor().setHealth(cell.getActor().getHealth() + 100);
             }
 
-            boolean itemExists = false;
-            for (int i = 0; i < items.size()-1; i++){
-                if(items.get(i).getTileName() == itemTileName){
-                    itemExists = true;
-                    break;
-                }
-            }
+            boolean itemExists = checkIfItemExists(itemTileName);
 
             if (!itemExists) {
                 items.add(itemToPickUp);
