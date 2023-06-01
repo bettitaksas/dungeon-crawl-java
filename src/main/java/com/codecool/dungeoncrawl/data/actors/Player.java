@@ -21,6 +21,30 @@ public class Player extends Actor {
         return "player";
     }
 
+    public void openDoor(int dx, int dy) {
+        Cell cell = this.getCell();
+        Cell nextCell = cell.getNeighbor(dx, dy);
+        boolean keyExists = false;
+        int keyAmount;
+        for (Item item : items) {
+            if (item instanceof Key) {
+                keyExists = true;
+                keyAmount = item.getAmount();
+                break;
+            }
+        }
+        if (nextCell.getType() == CellType.CLOSEDDOOR && keyExists == true /*&& keyAmount > 0*/) {
+            nextCell.setType(CellType.OPENEDDOOR);
+            for (Item item : items) {
+                if (item instanceof Key) {
+                    items.remove(item);
+                    break;
+                }
+            }
+
+        }
+    }
+
     public void fight(int dx, int dy) {
         Cell cell = this.getCell();
         Cell nextCell = cell.getNeighbor(dx, dy);
