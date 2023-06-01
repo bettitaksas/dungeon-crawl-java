@@ -28,7 +28,6 @@ public class Player extends Actor {
     }
 
     public void openDoor(int dx, int dy) {
-        Cell cell = this.getCell();
         Cell nextCell = cell.getNeighbor(dx, dy);
         boolean keyExists = checkIfItemExists("goldKey");
         if (nextCell.getType() == CellType.CLOSEDDOOR && keyExists) {
@@ -39,7 +38,6 @@ public class Player extends Actor {
                     break;
                 }
             }
-
         }
     }
 
@@ -77,22 +75,23 @@ public class Player extends Actor {
 
             if (!itemExists) {
                 items.add(itemToPickUp);
-                items.forEach(i -> System.out.println(i.getAmount()));
-                System.out.println("Length of the set: " + items.size());
-                System.out.println("First one picked up");
             } else {
-                for (int i = 0; i < items.size()-1; i++){
-                    if(items.get(i).getTileName() == itemTileName){
-                        items.get(i).setAmount(items.get(i).getAmount() + 1);
-                        break;
-                    }
-                }
+                increaseItemAmount(itemTileName);
             }
 
             if(cellType == CellType.SOCKS) {
                 getCell().setType(CellType.WATER);
             } else {
                 getCell().setType(CellType.FLOOR);
+            }
+        }
+    }
+
+    private void increaseItemAmount(String itemTileName) {
+        for (Item item : items) {
+            if (item.getTileName().equals(itemTileName)) {
+                item.setAmount(item.getAmount() + 1);
+                break;
             }
         }
     }
