@@ -1,14 +1,12 @@
 package com.codecool.dungeoncrawl.data;
 
 import com.codecool.dungeoncrawl.data.actors.Actor;
-import com.codecool.dungeoncrawl.data.deads.Dead;
 import com.codecool.dungeoncrawl.data.items.Item;
 
 public class Cell implements Drawable {
     private CellType type;
     private Actor actor;
     private Item item;
-    private Dead dead;
     private GameMap gameMap;
     private int x, y;
 
@@ -30,8 +28,6 @@ public class Cell implements Drawable {
     public void setActor(Actor actor) {
         this.actor = actor;
     }
-
-    public void setDead(Dead dead) {this.dead = dead;}
 
     public Actor getActor() {
         return actor;

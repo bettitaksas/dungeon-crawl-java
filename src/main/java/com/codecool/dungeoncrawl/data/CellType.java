@@ -5,14 +5,14 @@ public enum CellType {
     FLOOR("floor"),
     WALL("wall"),
     MONSTER("monster"),
-    DEADENEMY("deadEnemy"),
     CLOSEDDOOR("closedDoor"),
     OPENEDDOOR("openedDoor"),
     GOLDKEY("goldKey"),
     WATER("water"),
     SCUBA("scuba"),
     EGG("egg"),
-    WAND("wand");
+    WAND("wand"),
+    PLAYERWITHWAND("playerWithWand");
 
     private final String tileName;
 
