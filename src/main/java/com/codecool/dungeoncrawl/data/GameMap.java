@@ -42,7 +42,6 @@ public class GameMap {
         return dementor;
     }
 
-
     public int getWidth() {
         return width;
     }
