@@ -17,8 +17,8 @@ public class StatusPane {
     private Label keyValueLabel;
     private Label scubaTextLabel;
     private Label scubaValueLabel;
-    private Label eggTextLabel;
-    private Label eggValueLabel;
+    private Label socksTextLabel;
+    private Label socksValueLabel;
 
 
     public StatusPane() {
@@ -35,8 +35,8 @@ public class StatusPane {
         scubaTextLabel = new Label("Scuba: ");
         scubaValueLabel = new Label();
 
-        eggTextLabel = new Label("Egg: ");
-        eggValueLabel = new Label();
+        socksTextLabel = new Label("Socks: ");
+        socksValueLabel = new Label();
 
     }
 
@@ -53,8 +53,8 @@ public class StatusPane {
         ui.add(keyValueLabel, 1, 10);
         ui.add(scubaTextLabel, 0, 15);
         ui.add(scubaValueLabel, 1, 15);
-        ui.add(eggTextLabel, 0, 20);
-        ui.add(eggValueLabel, 1, 20);
+        ui.add(socksTextLabel, 0, 20);
+        ui.add(socksValueLabel, 1, 20);
 
 
         BorderPane borderPane = new BorderPane();
@@ -76,7 +76,7 @@ public class StatusPane {
         scubaValueLabel.setText(text);
     }
 
-    public void setEggValue(String text) {
-        eggValueLabel.setText(text);
+    public void setSocksValue(String text) {
+        socksValueLabel.setText(text);
     }
 }
