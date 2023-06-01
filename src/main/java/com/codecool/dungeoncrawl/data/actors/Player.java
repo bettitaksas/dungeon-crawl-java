@@ -32,12 +32,7 @@ public class Player extends Actor {
         boolean keyExists = checkIfItemExists("goldKey");
         if (nextCell.getType() == CellType.CLOSEDDOOR && keyExists) {
             nextCell.setType(CellType.OPENEDDOOR);
-            for (Item item : items) {
-                if (item instanceof Key) {
-                    items.remove(item);
-                    break;
-                }
-            }
+            removeKeyItem();
         }
     }
 
@@ -78,12 +73,24 @@ public class Player extends Actor {
             } else {
                 increaseItemAmount(itemTileName);
             }
+            setCellTypeBasedOnCellType(cellType);
+        }
+    }
 
-            if(cellType == CellType.SOCKS) {
-                getCell().setType(CellType.WATER);
-            } else {
-                getCell().setType(CellType.FLOOR);
+    private void removeKeyItem() {
+        for (Item item : items) {
+            if (item instanceof Key) {
+                items.remove(item);
+                break;
             }
+        }
+    }
+
+    private void setCellTypeBasedOnCellType(CellType cellType) {
+        if (cellType == CellType.SOCKS) {
+            getCell().setType(CellType.WATER);
+        } else {
+            getCell().setType(CellType.FLOOR);
         }
     }
 
