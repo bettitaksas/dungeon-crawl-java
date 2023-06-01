@@ -51,8 +51,8 @@ public class Player extends Actor {
                     nextCell.getActor().getTileName() == "basiliscus" ||
                     nextCell.getActor().getTileName() == "octopus"){
 
-                nextCell.getActor().setHealth(getHealth() - 5);
-                cell.getActor().setHealth(getHealth() - 2);
+                nextCell.getActor().setHealth(nextCell.getActor().getHealth() - 5);
+                cell.getActor().setHealth(cell.getActor().getHealth() - 2);
 
                 if(nextCell.getActor().getHealth() <= 0){
                     nextCell.getActor().die();
@@ -71,6 +71,9 @@ public class Player extends Actor {
         ////KISZERVEZNI!!
         if (getCell().getType() == CellType.WAND) {
             System.out.println("WAND!!!");
+
+            Cell cell = this.getCell();
+            cell.getActor().setHealth(cell.getActor().getHealth() + 100);
 
             // check if wand item already exists in the list
             boolean wandExists = false;
@@ -180,6 +183,15 @@ public class Player extends Actor {
             System.out.println("EGG!!!");
 
             // check if wand item already exists in the list
+            boolean wandExists = false;
+            for (Item item : items) {
+                if (item instanceof Wand) {
+                    wandExists = true;
+                    break;
+                }
+            }
+
+            // check if wand item already exists in the list
             boolean eggExists = false;
             for (Item item : items) {
                 if (item instanceof Egg) {
@@ -195,7 +207,7 @@ public class Player extends Actor {
                 items.forEach(i -> System.out.println(i.getAmount()));
                 System.out.println("Length of the set: " + items.size());
                 System.out.println("First " + egg.getTileName() + " picked up");
-            } else {
+            } else if (wandExists) {
                 // if wand item exists, increment its amount
                 for (Item item : items) {
                     if (item instanceof Egg) {
