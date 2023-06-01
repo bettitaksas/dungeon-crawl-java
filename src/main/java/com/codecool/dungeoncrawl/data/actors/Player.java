@@ -18,25 +18,21 @@ public class Player extends Actor {
         return "player";
     }
 
-    public void openDoor(int dx, int dy) {
-        Cell cell = this.getCell();
-        Cell nextCell = cell.getNeighbor(dx, dy);
-        boolean keyExists = false;
+    private boolean checkIfItemExists(String itemTileName) {
         for (Item item : items) {
-            if (item instanceof Key) {
-                keyExists = true;
-                break;
+            if (item.getTileName().equals(itemTileName)) {
+                return true;
             }
         }
+        return false;
+    }
+
+    public void openDoor(int dx, int dy) {
+        Cell nextCell = cell.getNeighbor(dx, dy);
+        boolean keyExists = checkIfItemExists("goldKey");
         if (nextCell.getType() == CellType.CLOSEDDOOR && keyExists) {
             nextCell.setType(CellType.OPENEDDOOR);
-            for (Item item : items) {
-                if (item instanceof Key) {
-                    items.remove(item);
-                    break;
-                }
-            }
-
+            removeKeyItem();
         }
     }
 
@@ -70,32 +66,39 @@ public class Player extends Actor {
                 cell.getActor().setHealth(cell.getActor().getHealth() + 100);
             }
 
-            boolean itemExists = false;
-            for (int i = 0; i < items.size()-1; i++){
-                if(items.get(i).getTileName() == itemTileName){
-                    itemExists = true;
-                    break;
-                }
-            }
+            boolean itemExists = checkIfItemExists(itemTileName);
 
             if (!itemExists) {
                 items.add(itemToPickUp);
-                items.forEach(i -> System.out.println(i.getAmount()));
-                System.out.println("Length of the set: " + items.size());
-                System.out.println("First one picked up");
             } else {
-                for (int i = 0; i < items.size()-1; i++){
-                    if(items.get(i).getTileName() == itemTileName){
-                        items.get(i).setAmount(items.get(i).getAmount() + 1);
-                        break;
-                    }
-                }
+                increaseItemAmount(itemTileName);
             }
+            setCellTypeBasedOnCellType(cellType);
+        }
+    }
 
-            if(cellType == CellType.SOCKS) {
-                getCell().setType(CellType.WATER);
-            } else {
-                getCell().setType(CellType.FLOOR);
+    private void removeKeyItem() {
+        for (Item item : items) {
+            if (item instanceof Key) {
+                items.remove(item);
+                break;
+            }
+        }
+    }
+
+    private void setCellTypeBasedOnCellType(CellType cellType) {
+        if (cellType == CellType.SOCKS) {
+            getCell().setType(CellType.WATER);
+        } else {
+            getCell().setType(CellType.FLOOR);
+        }
+    }
+
+    private void increaseItemAmount(String itemTileName) {
+        for (Item item : items) {
+            if (item.getTileName().equals(itemTileName)) {
+                item.setAmount(item.getAmount() + 1);
+                break;
             }
         }
     }
