@@ -58,8 +58,7 @@ public class Player extends Actor {
             player.setHealth(player.getHealth() - damageEnemy);
 
             if(enemy.getHealth() <= 0){
-                nextCell.setActor(null);
-                nextCell.setType(CellType.DEADENEMY);
+                enemy.die();
                 player.setHealth(player.getHealth() + gratisHealth);
             }
             if(player.getHealth() <= 0){
@@ -220,59 +219,10 @@ public class Player extends Actor {
         }
     }
 
-/*    public int getWand() {
-        return items.stream().filter(i -> Objects.equals(i.getTileName(), "wand")).findFirst().get().getAmount();
-    }*/
-
-    //KISZERVEZNI!!!
-    public int getWand() {
-        Optional<Item> wandItem = items.stream()
-                .filter(i -> Objects.equals(i.getTileName(), "wand"))
+    public int getItem(String itemTileName) {
+        Optional<Item> item = items.stream()
+                .filter(i -> Objects.equals(i.getTileName(), itemTileName))
                 .findFirst();
-
-        if (wandItem.isPresent()) {
-            return wandItem.get().getAmount();
-        } else {
-            // handle the case when "wand" item is not found
-            return 0; // or any other appropriate value
-        }
-    }
-
-    public int getKey() {
-        Optional<Item> keyItem = items.stream()
-                .filter(i -> Objects.equals(i.getTileName(), "goldKey"))
-                .findFirst();
-
-        if (keyItem.isPresent()) {
-            return keyItem.get().getAmount();
-        } else {
-            // handle the case when "wand" item is not found
-            return 0; // or any other appropriate value
-        }
-    }
-
-    public int getScuba() {
-        Optional<Item> scubaItem = items.stream()
-                .filter(i -> Objects.equals(i.getTileName(), "scuba"))
-                .findFirst();
-
-        if(scubaItem.isPresent()) {
-            return scubaItem.get().getAmount();
-        } else {
-            //handle the case when "scuba" item is not found
-            return 0; //or any other appropriate value
-        }
-    }
-
-    public int getEgg() {
-        Optional<Item> eggItem = items.stream()
-                .filter(i -> Objects.equals(i.getTileName(), "egg"))
-                .findFirst();
-
-        if(eggItem.isPresent()) {
-            return eggItem.get().getAmount();
-        } else {
-            return 0;
-        }
+        return item.map(Item::getAmount).orElse(0);
     }
 }
