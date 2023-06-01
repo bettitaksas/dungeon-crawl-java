@@ -56,9 +56,6 @@ public class UI {
 
                 if (cell.getActor() != null) {
                     Tiles.drawTile(context, cell.getActor(), x, y);
-                    //       if (cell.getActor().getTileName() == "dementor" ) {
-                    //           cell.getActor().randomMove();
-                    //       }
                 } else {
                     Tiles.drawTile(context, cell, x, y);
                 }

@@ -31,31 +31,13 @@ public class Cell implements Drawable {
         this.actor = actor;
     }
 
-    public void setDead(Dead dead) {this.dead = dead;}
-
     public Actor getActor() {
         return actor;
-    }
-
-    public void setItem(Item Item) {
-        this.item = item;
-    }
-
-    public Item getItem() {
-        return item;
     }
 
     public Cell getNeighbor(int dx, int dy) {
         return gameMap.getCell(x + dx, y + dy);
     }
-
-
-//teleport?
-  /*  public Cell getRandomOtherCell() {
-        int randomX = (int) Math.random()*24 + 1;
-        int randomY = (int) Math.random()*19 +1;
-        return gameMap.getCell((int) randomX, (int) randomY);
-    }*/
 
     @Override
     public String getTileName() {
