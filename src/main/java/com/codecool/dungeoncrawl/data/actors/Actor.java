@@ -7,7 +7,7 @@ import com.codecool.dungeoncrawl.data.deads.Dead;
 import com.codecool.dungeoncrawl.data.deads.deadEnemy;
 
 public abstract class Actor implements Drawable {
-    private Cell cell;
+    protected Cell cell;
     private int health = 10;
 
     public Actor(Cell cell) {
