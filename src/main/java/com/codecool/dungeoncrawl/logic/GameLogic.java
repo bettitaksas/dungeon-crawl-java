@@ -35,8 +35,7 @@ public class GameLogic {
 
     public String getScubaAmount() { return Integer.toString(map.getPlayer().getItem("scuba")); }
 
-    public String getEggAmount() { return Integer.toString(map.getPlayer().getItem("egg")); }
-
+    public String getSocksAmount() { return Integer.toString(map.getPlayer().getSocks()); }
 
     public GameMap getMap() {
         return map;

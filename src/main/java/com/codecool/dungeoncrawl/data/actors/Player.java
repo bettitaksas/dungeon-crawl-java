@@ -71,6 +71,7 @@ public class Player extends Actor {
             if (!itemExists) {
                 items.add(itemToPickUp);
             } else {
+
                 increaseItemAmount(itemTileName);
             }
             setCellTypeBasedOnCellType(cellType);
@@ -108,5 +109,17 @@ public class Player extends Actor {
                 .filter(i -> Objects.equals(i.getTileName(), itemTileName))
                 .findFirst();
         return item.map(Item::getAmount).orElse(0);
+    }
+
+    public int getSocks() {
+        Optional<Item> socksItem = items.stream()
+                .filter(i -> Objects.equals(i.getTileName(), "socks"))
+                .findFirst();
+
+        if(socksItem.isPresent()) {
+            return socksItem.get().getAmount();
+        } else {
+            return 0;
+        }
     }
 }
