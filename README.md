@@ -1,4 +1,118 @@
+<a name="readme-top"></a>
 
+[![Contributors][contributors-shield]][contributors-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
+
+<h3 align="center">Dungeon Craw</h3>
+
+  <p align="center">
+    This project is a basic rouglike game project with Harry Potter theme.
+    <br />
+    <a href="https://github.com/bettitaksas/dungeon-crawl-java"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+   
+
+  </p>
+</div>
+
+
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+    </li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
+
+
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+<p align="center">
+  <img src="" alt="kezdőkép">
+</p>
+
+Short decription about the project
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+### Built With
+
+* [![Java][Java]][Java-url]
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- GETTING STARTED -->
+
+[product-main]: images/screenshot.png
+## Getting Started
+
+Follow this quide to run and try the game.
+
+Open the project in IntelliJ IDEA.
+This is a Maven project, so you need to open `pom.xml`.
+The project uses JavaFX, so use the `javafx` Maven plugin to build and run the program.
+Build using `mvn javafx:compile`, and run using `mvn javafx:run`.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Katalin Szigetvári - szigetvarikati@gmail.com
+
+Project Link: https://github.com/bettitaksas/dungeon-crawl-java
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/szigetvarikati/test-project-MERN.svg?style=for-the-badge
+[contributors-url]: https://github.com/szigetvarikati/test-project-MERN/graphs/contributors
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/katalin-szigetvári-9829519a
+[product-main]: https://imgur.com/a/jEvI3mU
+[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[Next-url]: https://nextjs.org/
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
+[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+[Bootstrap-url]: https://getbootstrap.com
+[Javascript]: https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=typescript&logoColor=white
+[Javascript-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+[NodeJS]: https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white
+[NodeJS-url]: https://nodejs.org/en
+[Express.js]: https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB
+[Express.js-url]: https://expressjs.com/
+[MongoDB]: https://img.shields.io/badge/MongoDB-4169E1?style=for-the-badge&logo=postgresql&logoColor=white
+[MongoDB-url]: https://www.mongodb.com/
+[Css.com]: https://img.shields.io/badge/CSS-563D7C?style=for-the-badge&logo=css&logoColor=white
+[Css-url]: http://](https://www.w3.org/Style/CSS/Overview.en.html)https://www.w3.org/Style/CSS/Overview.en.html/
+
+
+Original readME!!!!::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::....
 # Dungeon Crawl
 
 ## Story
@@ -108,12 +222,3 @@ Create a feature that allows the hero to pick up an item.
   build and run the program. Build using `mvn javafx:compile`, and run using `mvn javafx:run`.
 - Do not delve into JavaFX technicalities too much, most of the GUI is ready.
 
-## Background materials
-- :book-open: [RogueBasin, a wiki with lots of resources on Roguelike creation](http://roguebasin.com/index.php?title=Articles)
-- :exclamation-circle: [Basics of OOP](pages/oop/basics-of-object-oriented-programming.md)
-
-- :exclamation-circle: [How to design classes](pages/java/how-to-design-classes.md)
-- :book-open: [JavaFX](https://en.wikipedia.org/wiki/JavaFX)
-- :book-open: [JavaFX Tutorial](http://tutorials.jenkov.com/javafx/index.html)
-
-- [1-Bit Pack by Kenney](https://kenney.nl/assets/bit-pack)
