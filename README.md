@@ -31,10 +31,10 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
+    <li><a href="#little-code-snippet">Little code snippet</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
-
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -74,6 +74,13 @@ Follow this quide to run and try the application.
   
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Little code snippet
+
+It is a fight method which is responsible for the figthing between Dobby and an enemy.
+
+<p align="center">
+  <img src="https://imgur.com/ejIPHPp.png" alt="Doyy is a free elf picture">
+</p>
 
 <!-- CONTACT -->
 ## Contact
